@@ -1,0 +1,178 @@
+/* 
+* The card flipping functionality was borrowed from W3Schools
+* https://www.w3schools.com/howto/howto_css_flip_card.asp
+*/
+
+.deck {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.card {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  width: 164px;
+  height: 230px;
+  margin: 5px;
+
+  background-color: transparent;
+  font-family: 'BioRhyme', serif;
+  font-size: 2.8rem;
+  line-height: 2.2rem;
+}
+
+.card__inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.card.flipped .card__inner {
+  transform: rotateY(180deg);
+}
+
+.card__front,
+.card__back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+
+
+}
+
+.card__front {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 10px;
+
+  background-color: #f7f7f7;
+}
+
+.card__back {
+  box-sizing: border-box;
+  background-color: #f00;
+  background-image: url('img/white-thread.png');
+  transform: rotateY(180deg);
+
+  border: 10px solid #fff;
+  box-shadow: 0 0 0 1px #ccc;
+}
+
+.suit {
+  align-self: center;
+}
+
+.number:first-child {
+  text-align: left;
+}
+
+.number:last-child {
+  text-align: right;
+}
+
+.diamonds,
+.hearts {
+  color: #DF001E;
+}
+
+.clubs,
+.spades {
+  color: #24202D;
+}
+
+
+
+/* Moi code */
+body {
+ margin: 0;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ height: 100vh;
+ width: 100vw;
+ font-family: verdana;
+ background: #002643;
+
+}
+
+h2{
+    color: #F5F7DE;
+    margin-left: 20px;
+    font-size: 1.7rem;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 800;
+    -webkit-text-stroke: 1px #B68928; 
+    /*adding text-stroke: https://css-tricks.com/adding-stroke-to-web-text/ */
+}
+
+a {
+  width:240px;
+  height: 60px;
+  text-decoration: none;
+  text-transform: uppercase;
+  background-color: transparent;
+  text-align: center;
+  line-height: 60px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  position: relative;
+  transition: all 0.2s;
+  color: white;
+  margin: 20px;
+}
+
+a:before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  width: 100%;
+  height: 100%;
+  background-color: #4D15A6;
+  z-index: -1;
+  mix-blend-mode: multiply;
+  transition: all 0.2s;
+  transform-origin: top;
+}
+
+a:hover:before {
+  top: -6px;
+  left: 0;
+  transform: perspective(1000px) rotateX(75deg);
+}
+
+a:after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 100%;
+  height: 100%;
+  background-color: #A60404;
+  z-index: -1;
+  mix-blend-mode: multiply;
+  transition: all 0.2s;
+  transform-origin: bottom;
+}
+
+a:hover:after {
+  top: 6px;
+  left: 0;
+  transform: perspective(1000px) rotateX(-75deg);
+}
+
+a:hover {
+  color:#fff;
+}
